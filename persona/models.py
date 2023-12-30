@@ -13,8 +13,6 @@ class Persona(models.Model):
     
     def save(self, *args, **kwargs):
         context = TenSEALContext().context
-        context.generate_galois_keys()
-
         if self.nombre:
             self.nombre = encrypt_text(context, self.nombre)
             

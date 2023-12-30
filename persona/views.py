@@ -44,8 +44,8 @@ def consultar_personas(request):
 
 
 def consultar_personas(request):
-    context = context_bfv()
     context = TenSEALContext().context
+    personas = Persona.objects.all()
 
     personas = Persona.objects.all()
 
