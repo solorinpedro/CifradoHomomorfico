@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear Persona</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="centered">
+        <h2 class="h2-personalizado">Registrar Nueva Persona</h2>
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <label class="label-personalizado" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+            {% endfor %}
+            <button type="submit" class="boton-personalizado">Guardar</button>
+        </form>
+        <!-- Enlace para regresar al dashboard o página principal -->
+        <div class="contenedor-regreso">
+            <a href="{% url 'home' %}" class="boton-regreso">Volver al Inicio</a>
+        </div>
+    </div>
+</body>
+</html>

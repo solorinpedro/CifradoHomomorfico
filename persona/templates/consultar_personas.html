@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Consultar Personas</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="centered">
+        <h2 class="h2-personalizado">Listado de Personas</h2>
+        <table table class="table-personas">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Dirección</th>
+                    <th>Cedula</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for persona in personas %}
+                <tr>
+                    <td class="no-data">{{ persona.nombre }}</td>
+                    <td class="no-data">{{ persona.apellido }}</td>
+                    <td class="no-data">{{ persona.direccion }}</td>
+                    <td class="no-data">{{ persona.cedula }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="no-data">No hay personas registradas.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="contenedor-regreso">
+        <a href="{% url 'home' %}" class="boton-regreso">Volver al Inicio</a>
+    </div>
+</body>
+</html>

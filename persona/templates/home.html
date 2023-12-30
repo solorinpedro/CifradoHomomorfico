@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Bienvenido a Gestión de Personas</h1>
+        <div class="dashboard-item">
+            <a href="{% url 'crear_personas' %}" class="boton-dashboard">Registrar Persona</a>
+            <a href="{% url 'consultar_personas' %}" class="boton-dashboard">Consultar Personas</a>
+
+        </div>
+    </div>
+</body>
+</html>

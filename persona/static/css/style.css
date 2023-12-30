@@ -1,0 +1,104 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+form {
+    margin: auto;
+    width: 300px;
+    padding: 20px;
+}
+
+.h2-personalizado {
+    text-align: center;
+    color: white;
+}
+
+input[type="text"], input[type="email"] {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px;
+    margin: 5px 0;
+    width: 100%;
+}
+
+/* Estilos para los labels */
+.label-personalizado {
+    display: block;
+    margin-top: 10px;
+    color: white;
+    text-align: left;
+}
+
+/* Estilos para los botones */
+.boton-personalizado {
+    background-color: #4CAF50; /* Color Verde */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.boton-personalizado:hover {
+    background-color: #45a049;
+}
+
+.dashboard {
+    text-align: center;
+}
+
+.boton-dashboard {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.boton-dashboard:hover {
+    background-color: #45a049;
+}
+
+.boton-regreso {
+    background-color: #f44336; 
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    transition: 0.3s;
+    position: absolute;
+    top: 20px; 
+    left: 10px;
+}
+
+.boton-regreso:hover {
+    background-color: #c0392b; /* Color al pasar el ratón por encima */
+}
+
+.table-personas {
+    margin: auto;
+    width: 80%; 
+    background-color: #f2f2f2; 
+    margin-top: 50px;
+}
+
+.table-personas th, .table-personas td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd; /* Línea separadora entre filas */
+    text-align: left; /* Alineación del texto */
+}
+
+.table-personas th {
+    background-color: #4CAF50; /* Color de fondo para los encabezados */
+    color: black;
+}
+
+.no-data {
+    color: black;
+}
