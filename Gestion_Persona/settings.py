@@ -16,6 +16,8 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -76,18 +78,14 @@ WSGI_APPLICATION = 'Gestion_Persona.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mssql',
-        'NAME': 'Gestion_PersonasDB',
-        'HOST': 'DESKTOP-C6180NC',
-        'PORT': '1433',
-
-        'OPTIONS': {
-            'driver': 'ODBC Driver 17 for SQL Server',
-            'Trusted_Connection': 'yes',
-        },
-    },
+        'ENGINE': 'mssql', 
+        'NAME': 'Gestion_PersonasDB', 
+        'USER': 'psolorin_SQLLogin_1',  
+        'PASSWORD': 'k5dverhime',  
+        'HOST': 'Gestion_PersonasDB.mssql.somee.com',  
+        'PORT': '1433',  
+    }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -129,3 +127,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
