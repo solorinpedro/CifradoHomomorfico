@@ -1,18 +1,16 @@
-import base64
 from django.db import models
-import tenseal as ts
-from .crypto_utils import context_bfv, encrypt_text
-from .tenSEALContext import TenSEALContext
+from persona.tenSEALContext import TenSEALContext
+from .crypto_utils import encrypt_text, decrypt_text
 
-# Create your models here.
 class Persona(models.Model):
     nombre = models.TextField(null=True, blank=True)
     apellido = models.TextField(null=True, blank=True)
     direccion = models.TextField(null=True, blank=True)
-    cedula= models.TextField(null=True, blank=True)
+    cedula = models.TextField(null=True, blank=True)
     
     def save(self, *args, **kwargs):
-        context = TenSEALContext().context
+        context = TenSEALContext()._instance.context
+
         if self.nombre:
             self.nombre = encrypt_text(context, self.nombre)
             
@@ -24,37 +22,20 @@ class Persona(models.Model):
             
         if self.cedula:
             self.cedula = encrypt_text(context, self.cedula)
-            super().save(*args, **kwargs)
+            
+        super().save(*args, **kwargs)
         
-    # Método para descifrar datos
     def decrypt_data(self):
-        context = context_bfv()
+        context = TenSEALContext()._instance.context
 
-        # Descifrar el nombre
         if self.nombre:
-            encrypted_list = self.nombre.split('...')
-            decrypted = [ts.bfv_vector_from(context, base64.b64decode(enc)) for enc in encrypted_list]
-            self.nombre = ''.join([chr(dec.decrypt()[0]) for dec in decrypted])
-
-        # Descifrar el apellido
+            self.nombre = decrypt_text(context, self.nombre)
+            
         if self.apellido:
-            encrypted_list = self.apellido.split('...')
-            decrypted = [ts.bfv_vector_from(context, base64.b64decode(enc)) for enc in encrypted_list]
-            self.apellido = ''.join([chr(dec.decrypt()[0]) for dec in decrypted])
-
-        # Descifrar la dirección
+            self.apellido = decrypt_text(context, self.apellido)
+            
         if self.direccion:
-            encrypted_list = self.direccion.split('...')
-            decrypted = [ts.bfv_vector_from(context, base64.b64decode(enc)) for enc in encrypted_list]
-            self.direccion = ''.join([chr(dec.decrypt()[0]) for dec in decrypted])
-
-        # Descifrar la cédula
+            self.direccion = decrypt_text(context, self.direccion)
+            
         if self.cedula:
-            encrypted_list = self.cedula.split('...')
-            decrypted = [ts.bfv_vector_from(context, base64.b64decode(enc)) for enc in encrypted_list]
-            self.cedula = ''.join([chr(dec.decrypt()[0]) for dec in decrypted])
-
-
-
-
-        
+            self.cedula = decrypt_text(context, self.cedula)

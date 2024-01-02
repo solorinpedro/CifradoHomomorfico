@@ -10,6 +10,11 @@ form {
     padding: 20px;
 }
 
+textarea {
+    width: 300px;  /* Ancho del textarea */
+    height: 100px; /* Altura del textarea */
+}
+
 .h2-personalizado {
     text-align: center;
     color: white;
